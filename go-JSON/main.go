@@ -15,6 +15,7 @@ type User struct{
 func main() {
 fmt.Println("learing golang/json")
 StructTJson()
+JsonTstruct()
 
 }
 // start convert Go struct into the Json 
@@ -28,4 +29,18 @@ result := string(jsonData)
 fmt.Println(result)
 return result, nil
 	
+}
+
+// start covert json to go struct
+func JsonTstruct()(string, error){
+	user := `{"name":"issa","email":"prazoo45@gmail.com","age":23}`
+	// user := `{"name":"Issa","email":"prazoo45@gmail.com","age":23}` 
+	var details User
+	err := json.Unmarshal([]byte(user),&details)
+	if err != nil{
+		return "", fmt.Errorf("failed to unmarshal json", err)	
+	}
+	result := fmt.Sprintf("Name: %s, Email: %s, Age: %d", details.Name, details.Email, details.Age)
+	fmt.Println(result)
+   return result, nil
 }
