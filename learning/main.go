@@ -47,11 +47,15 @@ func main(){
 		log.Fatal("Failed to Marshal first user", err)
 		return
 	}
-  result1 := fmt.Sprintf(string(jsonData1))
+  result1 := string(jsonData1)
   fmt.Println("here is the result for the first data:", result1)
 
-  jsonData2 , err := json.Marshal(user2)
-  result2 := fmt.Sprintf(string(jsonData2))
+  jsonData2,err := json.Marshal(user2)
+  if err != nil {
+	log.Fatal("Failed to Marshal first user", err)
+		return
+  }
+  result2 := string(jsonData2)
   fmt.Println("here is the result for the 2nd data:", result2)
   
 
