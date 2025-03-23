@@ -21,6 +21,12 @@
 // }
 
 package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"log"
+)
  
 
 type UserEmail struct{
@@ -28,10 +34,25 @@ type UserEmail struct{
 }
 type User struct{
   Name string `json:"name"`
-  Age string `json:"age"`
-  Email *UserEmail `json:"email"`
+  Age int`json:"age"`
+  Email *UserEmail `json:"email,omitempty"`
 }
 
 func main(){
-	
+	user1 := User{Name: "Prazo", Age: 34,Email: nil}
+	user2:= User{Name: "Shabs", Age: 30,Email:&UserEmail{Email: "shabs76@gmail.com"}}
+
+	jsonData1, err := json.Marshal(user1)
+	if err != nil {
+		log.Fatal("Failed to Marshal first user", err)
+		return
+	}
+  result1 := fmt.Sprintf(string(jsonData1))
+  fmt.Println("here is the result for the first data:", result1)
+
+  jsonData2 , err := json.Marshal(user2)
+  result2 := fmt.Sprintf(string(jsonData2))
+  fmt.Println("here is the result for the 2nd data:", result2)
+  
+
 }
