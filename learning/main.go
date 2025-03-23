@@ -20,6 +20,45 @@
 // 	fmt.Println(string(jsonData))
 // }
 
+// package main
+
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"log"
+// )
+
+// type UserEmail struct{
+// 	Email  string `json:"email"`
+// }
+// type User struct{
+//   Name string `json:"name"`
+//   Age int`json:"age"`
+//   Email *UserEmail `json:"email,omitempty"`
+// }
+
+// func main(){
+// 	user1 := User{Name: "Prazo", Age: 34,Email: nil}
+// 	user2:= User{Name: "Shabs", Age: 30,Email:&UserEmail{Email: "shabs76@gmail.com"}}
+
+// 	jsonData1, err := json.Marshal(user1)
+// 	if err != nil {
+// 		log.Fatal("Failed to Marshal first user", err)
+// 		return
+// 	}
+//   result1 := string(jsonData1)
+//   fmt.Println("here is the result for the first data:", result1)
+
+//   jsonData2,err := json.Marshal(user2)
+//   if err != nil {
+// 	log.Fatal("Failed to Marshal first user", err)
+// 		return
+//   }
+//   result2 := string(jsonData2)
+//   fmt.Println("here is the result for the 2nd data:", result2)
+
+// }
+
 package main
 
 import (
@@ -27,36 +66,21 @@ import (
 	"fmt"
 	"log"
 )
- 
 
-type UserEmail struct{
-	Email  string `json:"email"`
-}
-type User struct{
-  Name string `json:"name"`
-  Age int`json:"age"`
-  Email *UserEmail `json:"email,omitempty"`
+type Product struct{
+	Name  string `json:"name"`
+	Price float64 `json:"price"`
 }
 
-func main(){
-	user1 := User{Name: "Prazo", Age: 34,Email: nil}
-	user2:= User{Name: "Shabs", Age: 30,Email:&UserEmail{Email: "shabs76@gmail.com"}}
+func main()  {
+	product := `{"name":"Laptop", "price":34.5 }`
 
-	jsonData1, err := json.Marshal(user1)
+	var prd Product
+	err := json.Unmarshal([]byte(product), (&prd))
 	if err != nil {
-		log.Fatal("Failed to Marshal first user", err)
+		log.Fatal("Failed to Decode produjct", err)
 		return
 	}
-  result1 := string(jsonData1)
-  fmt.Println("here is the result for the first data:", result1)
-
-  jsonData2,err := json.Marshal(user2)
-  if err != nil {
-	log.Fatal("Failed to Marshal first user", err)
-		return
-  }
-  result2 := string(jsonData2)
-  fmt.Println("here is the result for the 2nd data:", result2)
-  
-
+	fmt.Println(prd.Name, prd.Price,"$")
+	
 }
