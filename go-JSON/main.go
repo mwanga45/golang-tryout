@@ -14,14 +14,18 @@ type User struct{
 }
 func main() {
 fmt.Println("learing golang/json")
+StructTJson()
 
-// start convert Go struct into the Json 
-user := User{Name: "Issa", Email: "prazoo45@gmail.com", Age:23}
-if jsonData,err := json.Marshal(user);err != nil{
-	fmt.Errorf("faild to marshail %v",err)
-	return
-}else{
-	fmt.Println(string(jsonData))
 }
-
+// start convert Go struct into the Json 
+func StructTJson()(string, error){
+  user := User{Name: "Issa", Email: "Prazoo45@gmail.com",Age: 23}
+  jsonData, err := json.Marshal(user)
+  if err != nil{
+	return "",fmt.Errorf("Failed to Marshal struct %v",err)
+  }
+result := string(jsonData)
+fmt.Println(result)
+return result, nil
+	
 }
