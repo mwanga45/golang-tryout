@@ -85,55 +85,61 @@
 
 // }
 
+// package main
+
+// import (
+// 	"encoding/json"
+// 	"fmt"
+// 	"log"
+// 	"net/http"
+
+// 	"github.com/gorilla/mux"
+// )
+
+
+
+// type Product struct{
+// 	Name string `json:"name"`
+// 	Price float64 `json:"price"`
+// }
+// type Response struct{
+// 	Success  bool  `json:"success"`
+// 	Message string `json:"message,omitempty"`
+// }
+// const Port = "3000"
+// func main()  {
+// 	r :=mux.NewRouter()
+// 	r.HandleFunc("/product",Productdetails).Methods("POST")	
+// 	fmt.Println("server listen to port....",Port)
+// 	log.Fatal(http.ListenAndServe(":"+Port, r))
+// }
+
+// func Productdetails(w http.ResponseWriter, r *http.Request){
+// 	if r.Method != http.MethodPost{
+// 		w.WriteHeader(http.StatusMethodNotAllowed)
+// 		return
+// 	}
+// 	var prd Product
+// 	err:= json.NewDecoder(r.Body).Decode(&prd)
+// 	if err != nil {
+// 		w.WriteHeader(http.StatusInternalServerError)
+// 		return
+// 	}
+// 	fmt.Println(prd.Name, prd.Price,"$")
+
+// 	w.Header().Set("Content-Type", "Application/json")
+// 	err = json.NewEncoder(w).Encode(Response{
+// 		Message: "Successufly recive the data",
+// 		Success: true,
+// 	})
+// 	if err != nil {
+// 		log.Fatal("Failed to Encode data ", err)
+// 	}
+// }
+
 package main
-
-import (
-	"encoding/json"
-	"fmt"
-	"log"
-	"net/http"
-
-	"github.com/gorilla/mux"
-)
-
-
 
 type Product struct{
 	Name string `json:"name"`
 	Price float64 `json:"price"`
 }
-type Response struct{
-	Success  bool  `json:"success"`
-	Message string `json:"message,omitempty"`
-}
-const Port = "3000"
-func main()  {
-	r :=mux.NewRouter()
-	r.HandleFunc("/product",Productdetails).Methods("POST")	
-	fmt.Println("server listen to port....",Port)
-	log.Fatal(http.ListenAndServe(":"+Port, r))
-}
-
-func Productdetails(w http.ResponseWriter, r *http.Request){
-	if r.Method != http.MethodPost{
-		w.WriteHeader(http.StatusMethodNotAllowed)
-		return
-	}
-	var prd Product
-	err:= json.NewDecoder(r.Body).Decode(&prd)
-	if err != nil {
-		w.WriteHeader(http.StatusInternalServerError)
-		return
-	}
-	fmt.Println(prd.Name, prd.Price,"$")
-
-	w.Header().Set("Content-Type", "Application/json")
-	err = json.NewEncoder(w).Encode(Response{
-		Message: "Successufly recive the data",
-		Success: true,
-	})
-	if err != nil {
-		log.Fatal("Failed to Encode data ", err)
-	}
-}
-
