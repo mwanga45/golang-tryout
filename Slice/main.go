@@ -60,4 +60,9 @@ func main() {
     collection3 = append(collection3[:index] , collection3[index + 1:]...)
     fmt.Println(collection3)
    
+
+   var str = "Hello world"
+    bytes := []byte(str)
+   
+   fmt.Println("bytes slice: ",bytes)
 }

@@ -14,8 +14,13 @@ func main() {
 
 	// to create date   
 	createdate := time.Date(2002,time.October,07,23,02,23,0,time.UTC)
+	fmt.Println(createdate)
+	fmt.Println("up above")
+    P:= fmt.Println
+	createdate2 :=  time.Date(2021,time.March,02,12,03,03,0,time.UTC)
+	P(createdate2)
 	fmt.Println(createdate.Format("01-02-2006 15:04:05 Monday"))
     saido :=time.Date(2024,time.February,05,02,34,34,12,time.UTC)
-	fmt.Println(saido.Format("01-02-2006 15:04:05 Monday"))
+	fmt.Println(saido.Format("02-02-2006 15:04:05 Monday"))
 
 }
