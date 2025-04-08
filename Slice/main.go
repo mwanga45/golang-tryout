@@ -6,7 +6,6 @@ import (
 	"sort"
 	"time"
 
-	"github.com/golang-jwt/jwt"
 )
 
 func main() {
@@ -72,16 +71,16 @@ func main() {
 // Username := "Issa mwanga"
 // Password := "1234567" 
 var SecreteKey = []byte("secrete-key")
-func createToken(Username string, Password string)(string, error){
-    token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.NewWithClaims{
-        "Username": Username,
-        "Password": Password,
-        "exp": time.Now().Add(time.Hour * 24).Unix(),
-    })
-      token, err :=  token.SignedString(&SecreteKey) 
-      if  err != nil{
-          fmt.Println("failed to load  token in slice")
-        return err
-     }
-    return token 
-}
+// func createToken(Username string, Password string)(string, error){
+//     token := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.NewWithClaims{
+//         "Username": Username,
+//         "Password": Password,
+//         "exp": time.Now().Add(time.Hour * 24).Unix(),
+//     })
+//       token, err :=  token.SignedString(&SecreteKey) 
+//       if  err != nil{
+//           fmt.Println("failed to load  token in slice")
+//         return err
+//      }
+//     return token 
+// }

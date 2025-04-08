@@ -32,23 +32,48 @@ func main() {
 	// 	fmt.Printf("from %s To %s\n",currentDate.Format("2/1/2006"),NextTime.Format("2/1/2006"))
 	// 	currentDate = NextTime
 	// } 
- currentDate := time.Now()
- loopTime   := 8
- intervalTime := 1
- var TimeSlot []map[string]interface {}
+//  currentDate := time.Now()
+//  loopTime   := 8
+//  intervalTime := 1
+//  var TimeSlot []map[string]interface {}
 
- for i := 0; i<loopTime; i++{
-	// time slice 
-	nextTime := currentDate.AddDate(0,0,intervalTime)
-	timeslote := map[string]interface{}{
-		"From":currentDate.Format("2/1/2006"),
-		"To":nextTime.Format("2/6/2006"),
-	}
-	TimeSlot = append(TimeSlot,timeslote)
-	currentDate = nextTime
+//  for i := 0; i<loopTime; i++{
+// 	// time slice 
+// 	nextTime := currentDate.AddDate(0,0,intervalTime)
+// 	timeslote := map[string]interface{}{
+// 		"From":currentDate.Format("2/1/2006"),
+// 		"To":nextTime.Format("2/6/2006"),
+// 	}
+// 	TimeSlot = append(TimeSlot,timeslote)
+// 	currentDate = nextTime
 	
- }
-   for _ , slot := range TimeSlot{
-	fmt.Printf("From %s To %s \n", slot["From"], slot["To"])
-   }
+//  }
+//    for _ , slot := range TimeSlot{
+// 	fmt.Printf("From %s To %s \n", slot["From"], slot["To"])
+//    }
+// 
+
+// for time interval  eg from  6:30  to 8:30
+
+Timelayout := "15:04" // 24-hours format 
+
+startTime, _ := time.Parse(Timelayout,"6:30")
+endTime,_ := time.Parse(Timelayout, "8:30")
+intervalMinutes := 10 * time.Minute 
+
+Now := time.Now()
+
+startTime =time.Date (Now.Year(), Now.Month(),Now.Day(),startTime.Hour(), startTime.Minute(),0,0,Now.Location())
+endTime = time.Date(Now.Year(),Now.Month(),Now.Day(), endTime.Hour(),endTime.Minute(),0,0,Now.Location())
+ var Timeslote []map[string]interface {}
+for t := startTime; t.Before(endTime); t = t.Add(intervalMinutes){
+	timeslot := map[string]interface{}{
+		"From":t.Format("03:04 PM"),
+	}
+	Timeslote = append(Timeslote, timeslot)
+}
+for _, slot := range Timeslote{
+	fmt.Printf("Time %s \n", slot["From"])
+}
+
 }
