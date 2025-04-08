@@ -48,5 +48,7 @@ func main() {
 	currentDate = nextTime
 	
  }
- fmt.Println(TimeSlot)
+   for _ , slot := range TimeSlot{
+	fmt.Printf("From %s To %s \n", slot["From"], slot["To"])
+   }
 }
