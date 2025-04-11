@@ -1,11 +1,17 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
 )
-
+type ExpoPushMessage struct {
+	To    string `json:"to"`
+	Title string `json:"title"`
+	Body  string `json:"body"`
+	Sound string `json:"sound,omitempty"`
+}
 // this we try to get request from the web browser using package net/HTTP
 const url = "https://www.google.com/search?q=nida+online&oq=nida&gs_lcrp=EgZjaHJvbWUqDAgBECMYJxiABBiKBTIMCAAQRRg5GLEDGIAEMgwIARAjGCcYgAQYigUyBwgCEAAYgAQyBwgDEAAYgAQyBwgEEAAYgAQyBwgFEAAYgAQyDQgGEC4YrwEYxwEYgAQyBwgHEAAYgAQyBwgIEAAYgAQyBwgJEAAYgATSAQkxNjI4NmowajSoAgewAgE&sourceid=chrome&ie=UTF-8"
 
@@ -29,4 +35,19 @@ func main(){
 		panic(err)
 	}
 	fmt.Print("content is:",string(response2))
+
+    ex := ExpoPushMessage{
+		Body: "hello world",
+		To: "issa mwanga",
+		Title: "greeting",
+		Sound: "default",
+	}
+	printJson(ex)
+    
+
 }
+func printJson(ex ExpoPushMessage){
+	payload , _ := json.Marshal([]ExpoPushMessage{ex})
+	fmt.Println(payload)
+}
+
