@@ -6,14 +6,17 @@ import (
 )
 
 func main() {
-	time.AfterFunc( 1 *time.Minute, func() {
-		result := Printlns(5,4)
-		fmt.Println(result)
+	time.AfterFunc(30 *time.Second, func() {
+		result := Additional(5, 4)
+		fmt.Println("The answer is:",result)
+
 	})
-	time.Sleep(1500 *time.Second)
+	time.Sleep(45 *time.Second)
+
 }
 
-func Printlns(x int, y int) int {
+func Additional(x int, y int) int {
 	Result := x + y
 	return Result
 }
+ 
