@@ -6,6 +6,7 @@ import (
 	"os"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func main() {
@@ -42,6 +43,9 @@ func main() {
    }
    numbrating := input2 + 1
    fmt.Println("rating after add one per Each rate:", numbrating)
+
+   now := time.Now()
+   fmt.Print(now)
 
 	
 }

@@ -1,7 +1,8 @@
 package main
 
 import (
-	"encoding/json"
+	// "bytes"
+	// "encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -36,18 +37,21 @@ func main(){
 	}
 	fmt.Print("content is:",string(response2))
 
-    ex := ExpoPushMessage{
-		Body: "hello world",
-		To: "issa mwanga",
-		Title: "greeting",
-		Sound: "default",
-	}
-	printJson(ex)
+    // ex := ExpoPushMessage{
+	// 	Body: "hello world",
+	// 	To: "issa mwanga",
+	// 	Title: "greeting",
+	// 	Sound: "default",
+	// }
+	// printJson(ex)
     
 
 }
-func printJson(ex ExpoPushMessage){
-	payload , _ := json.Marshal([]ExpoPushMessage{ex})
-	fmt.Println(payload)
-}
+// func printJson(ex ExpoPushMessage){
+// 	payload , _ := json.Marshal([]ExpoPushMessage{ex})
+// 	fmt.Println(payload)
+// 	// buffer := bytes.NewBuffer(payload)
+
+// 	// fmt.Println(buffer)
+// }
 
