@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"log"
+	"strings"
 	"time"
 )
 
@@ -76,4 +78,32 @@ for _, slot := range Timeslote{
 	fmt.Printf("Time %s \n", slot["From"])
 }
 
+// weekday := "Mon-Fri 4AM-5PM"
+
+// availabletime := fmt.Sprintf(weekday)
+// fmt.Println(availabletime)
+loc,_ := time.LoadLocation("Local")
+// fmt.Println(loc)
+Now = time.Now().In(loc)
+fmt.Println(Now)
+intervalTime := "03:05 AM - 04:50 PM"
+times := strings.Split(intervalTime,"-")
+if len(times) != 2{
+	log.Fatal("something went wrong")
+} 
+startime := strings.TrimSpace(times[0])
+endtime := strings.TrimSpace(times[1])
+start , err1 := time.ParseInLocation("03:04 PM", startime,loc)
+end, err2 := time.ParseInLocation("03:04 PM", endtime,loc)
+
+
+if err1 != nil || err2 != nil {
+	log.Printf("Failed to parse time: %v | %v\n", err1, err2)
+	return
+}
+currentTime := Now.Format("03:04 PM")
+
+
+// fmt.Println(start)
+// fmt.Println(end)
 }
