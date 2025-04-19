@@ -49,7 +49,4 @@ func (s *APIServer) HandleCreateAccount(w http.ResponseWriter , r *http.Request)
 	return nil
 
 }
-func (s *APIServer) HandleTransaction(w http.ResponseWriter , r *http.Request) error {
-	return nil
 
-}
