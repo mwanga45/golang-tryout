@@ -9,7 +9,7 @@ require (
 
 require (
 	github.com/golang-jwt/jwt/v5 v5.2.2 // indirect
-	golang.org/x/sys v0.27.0 // indirect
+	golang.org/x/sys v0.33.0 // indirect
 	gopkg.in/alexcesaro/quotedprintable.v3 v3.0.0-20150716171945-2caba252f4dc // indirect
 )
 
@@ -19,5 +19,5 @@ require (
 	github.com/felixge/httpsnoop v1.0.4 // indirect
 	github.com/gorilla/handlers v1.5.2
 	github.com/gorilla/mux v1.8.1
-	golang.org/x/crypto v0.29.0
+	golang.org/x/crypto v0.38.0
 )
